@@ -74,8 +74,6 @@ Shop API автоматически отправляет товары из фа�
 
 - Поиск товаров docker-compose exec client_api python app.py search "умные часы"
 
-- Получение рекомендаций docker-compose exec client_api python app.py recommend "user123"
-
 - Управление запрещенными товарами:
 
 docker-compose exec faust_stream python app.py ban
