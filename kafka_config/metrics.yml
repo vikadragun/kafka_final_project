@@ -1,0 +1,20 @@
+# Конфигурация метрик для Prometheus
+metrics:
+  reporters:
+    - type: prometheus
+      port: 7071
+      prefix: kafka_server_
+      labels:
+        kafka_id: "1"
+      config:
+        # Настройки сбора метрик
+        jmx_url: service:jmx:rmi:///jndi/rmi://:9999/jmxrmi
+        lowercaseOutputName: true
+        lowercaseOutputLabelNames: true
+        rules:
+          - pattern: kafka.server<type=(.+), name=(.+)><>Value
+            name: kafka_server_$1_$2
+            type: GAUGE
+          - pattern: kafka.network<type=(.+), name=(.+)><>Value
+            name: kafka_network_$1_$2
+            type: GAUGE

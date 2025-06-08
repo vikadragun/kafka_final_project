@@ -1,0 +1,171 @@
+version: '3.8'
+
+services:
+  # Zookeeper
+  zookeeper:
+    image: confluentinc/cp-zookeeper:7.3.2
+    hostname: zookeeper
+    container_name: zookeeper
+    ports:
+      - "2181:2181"
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+      ZOOKEEPER_SERVER_ID: 1
+    volumes:
+      - zookeeper-data:/var/lib/zookeeper/data
+      - zookeeper-log:/var/lib/zookeeper/log
+    #healthcheck:
+     # test: ["CMD", "zkServer.sh", "status"]
+      #interval: 10s
+      #timeout: 5s
+      #retries: 6
+    deploy:
+      resources:
+        limits:
+          memory: 1G
+
+  # Kafka Brokers
+  kafka1:
+    image: confluentinc/cp-kafka:7.3.2
+    hostname: kafka1
+    container_name: kafka1
+    depends_on:
+      - zookeeper
+    ports:
+      - "9093:9093"
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: "zookeeper:2181"
+      KAFKA_INTER_BROKER_LISTENER_NAME: SSL
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: SSL:SSL
+      KAFKA_ADVERTISED_LISTENERS: SSL://kafka1:9093
+      KAFKA_SSL_KEYSTORE_FILENAME: kafka.kafka1.keystore.jks
+      KAFKA_SSL_KEYSTORE_CREDENTIALS: confluent
+      KAFKA_SSL_KEY_CREDENTIALS: confluent
+      KAFKA_SSL_TRUSTSTORE_FILENAME: kafka.server.truststore.jks
+      KAFKA_SSL_TRUSTSTORE_CREDENTIALS: confluent
+      KAFKA_SSL_CLIENT_AUTH: required
+      KAFKA_ZOOKEEPER_SESSION_TIMEOUT_MS: 60000
+      KAFKA_ZOOKEEPER_CONNECTION_TIMEOUT_MS: 60000
+    volumes:
+      - ./kafka_secrets:/etc/kafka/secrets
+
+  kafka2:
+    image: confluentinc/cp-kafka:7.3.2
+    hostname: kafka2
+    container_name: kafka2
+    depends_on:
+      - zookeeper
+      - kafka1
+    ports:
+      - "9094:9094"
+    environment:
+      KAFKA_BROKER_ID: 2
+      KAFKA_ZOOKEEPER_CONNECT: "zookeeper:2181"
+      KAFKA_INTER_BROKER_LISTENER_NAME: SSL
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: SSL:SSL
+      KAFKA_ADVERTISED_LISTENERS: SSL://kafka2:9094
+      KAFKA_SSL_KEYSTORE_FILENAME: kafka.kafka2.keystore.jks
+      KAFKA_SSL_KEYSTORE_CREDENTIALS: confluent
+      KAFKA_SSL_KEY_CREDENTIALS: confluent
+      KAFKA_SSL_TRUSTSTORE_FILENAME: kafka.server.truststore.jks
+      KAFKA_SSL_TRUSTSTORE_CREDENTIALS: confluent
+      KAFKA_SSL_CLIENT_AUTH: required
+    volumes:
+      - ./kafka_secrets:/etc/kafka/secrets
+
+  # Elastic Stack
+  elasticsearch:
+    image: elasticsearch:7.14.0
+    environment:
+      - discovery.type=single-node
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms1g -Xmx1g"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - esdata:/usr/share/elasticsearch/data
+    ports:
+      - "9200:9200"
+
+  kibana:
+    image: kibana:7.14.0
+    depends_on:
+      - elasticsearch
+    ports:
+      - "5601:5601"
+    environment:
+      ELASTICSEARCH_HOSTS: http://elasticsearch:9200
+
+  # Hadoop/Spark
+  namenode:
+    image: bde2020/hadoop-namenode:2.0.0-hadoop3.2.1-java8
+    container_name: namenode
+    volumes:
+      - hadoop_namenode:/hadoop/dfs/name
+    environment:
+      - CLUSTER_NAME=marketplace
+    ports:
+      - "9870:9870"
+
+  datanode:
+    image: bde2020/hadoop-datanode:2.0.0-hadoop3.2.1-java8
+    container_name: datanode
+    depends_on:
+      - namenode
+    volumes:
+      - hadoop_datanode:/hadoop/dfs/data
+    environment:
+      - SERVICE_PRECONDITION=namenode:9870
+
+  spark-master:
+    image: bde2020/spark-master:3.0.1-hadoop3.2
+    container_name: spark-master
+    depends_on:
+      - namenode
+      - datanode
+    ports:
+      - "8080:8080"
+      - "7077:7077"
+
+  spark-worker:
+    image: bde2020/spark-worker:3.0.1-hadoop3.2
+    container_name: spark-worker
+    depends_on:
+      - spark-master
+    ports:
+      - "8081:8081"
+    environment:
+      - SPARK_MASTER=spark://spark-master:7077
+
+  # Application Services
+  shop_api:
+    build: ./shop_api
+    depends_on:
+      - kafka1
+      - kafka2
+    volumes:
+      - ./kafka_secrets:/etc/kafka/secrets
+      - ./shop_api/products.json:/app/products.json:ro
+    command: python app.py
+
+  client_api:
+    build: ./client_api
+    depends_on:
+      - kafka1
+      - kafka2
+      - elasticsearch
+    volumes:
+      - ./kafka_secrets:/etc/kafka/secrets
+    command: ["python", "app.py", "search", "test"]
+    network_mode: host
+
+volumes:
+  zookeeper-data:
+  zookeeper-log:
+  esdata:
+  hadoop_namenode:
+  hadoop_datanode:

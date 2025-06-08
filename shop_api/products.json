@@ -1,0 +1,343 @@
+[
+  {
+    "product_id": "12345",
+    "name": "Умные часы XYZ",
+    "description": "Умные часы с функцией мониторинга здоровья, GPS и уведомлениями.",
+    "price": {
+      "amount": 4999.99,
+      "currency": "RUB"
+    },
+    "category": "Электроника",
+    "brand": "XYZ",
+    "stock": {
+      "available": 150,
+      "reserved": 20
+    },
+    "sku": "XYZ-12345",
+    "tags": ["умные часы", "гаджеты", "технологии"],
+    "images": [
+      {
+        "url": "https://example.com/images/product1.jpg",
+        "alt": "Умные часы XYZ - вид спереди"
+      },
+      {
+        "url": "https://example.com/images/product1_side.jpg",
+        "alt": "Умные часы XYZ - вид сбоку"
+      }
+    ],
+    "specifications": {
+      "weight": "50g",
+      "dimensions": "42mm x 36mm x 10mm",
+      "battery_life": "24 hours",
+      "water_resistance": "IP68"
+    },
+    "created_at": "2023-10-01T12:00:00Z",
+    "updated_at": "2023-10-10T15:30:00Z",
+    "index": "products",
+    "store_id": "store_001"
+  },
+  {
+    "product_id": "67890",
+    "name": "Смартфон Alpha 12",
+    "description": "Флагманский смартфон с процессором Snapdragon 8 Gen 2 и камерой 108 МП.",
+    "price": {
+      "amount": 89999.00,
+      "currency": "RUB"
+    },
+    "category": "Электроника",
+    "brand": "Alpha",
+    "stock": {
+      "available": 75,
+      "reserved": 15
+    },
+    "sku": "ALP-67890",
+    "tags": ["смартфон", "флагман", "Android"],
+    "images": [
+      {
+        "url": "https://example.com/images/product2.jpg",
+        "alt": "Смартфон Alpha 12 - черный"
+      }
+    ],
+    "specifications": {
+      "weight": "198g",
+      "dimensions": "163.7mm x 76.2mm x 8.9mm",
+      "battery_life": "2 days",
+      "storage": "256GB"
+    },
+    "created_at": "2023-09-15T10:20:00Z",
+    "updated_at": "2023-10-05T14:45:00Z",
+    "index": "products",
+    "store_id": "store_001"
+  },
+  {
+    "product_id": "54321",
+    "name": "Наушники Pulse Pro",
+    "description": "Беспроводные наушники с активным шумоподавлением.",
+    "price": {
+      "amount": 12999.50,
+      "currency": "RUB"
+    },
+    "category": "Аудио",
+    "brand": "Pulse",
+    "stock": {
+      "available": 200,
+      "reserved": 30
+    },
+    "sku": "PLS-54321",
+    "tags": ["наушники", "Bluetooth", "ANC"],
+    "images": [
+      {
+        "url": "https://example.com/images/product3.jpg",
+        "alt": "Наушники Pulse Pro - белые"
+      },
+      {
+        "url": "https://example.com/images/product3_case.jpg",
+        "alt": "Кейс для наушников Pulse Pro"
+      }
+    ],
+    "specifications": {
+      "weight": "58g",
+      "battery_life": "30 hours",
+      "bluetooth_version": "5.2",
+      "noise_cancellation": "Yes"
+    },
+    "created_at": "2023-08-20T08:00:00Z",
+    "updated_at": "2023-09-30T11:10:00Z",
+    "index": "products",
+    "store_id": "store_002"
+  },
+  {
+    "product_id": "98765",
+    "name": "Электронная книга BookLight 2",
+    "description": "Читалка с экраном E-Ink 6 дюймов и подсветкой.",
+    "price": {
+      "amount": 8999.00,
+      "currency": "RUB"
+    },
+    "category": "Электроника",
+    "brand": "BookLight",
+    "stock": {
+      "available": 50,
+      "reserved": 5
+    },
+    "sku": "BL-98765",
+    "tags": ["электронная книга", "читалка", "E-Ink"],
+    "images": [
+      {
+        "url": "https://example.com/images/product4.jpg",
+        "alt": "Электронная книга BookLight 2"
+      }
+    ],
+    "specifications": {
+      "weight": "180g",
+      "screen_size": "6 inches",
+      "storage": "8GB",
+      "battery_life": "4 weeks"
+    },
+    "created_at": "2023-07-10T13:15:00Z",
+    "updated_at": "2023-10-01T09:25:00Z",
+    "index": "products",
+    "store_id": "store_002"
+  },
+  {
+    "product_id": "13579",
+    "name": "Фитнес-браслет FitGo 3",
+    "description": "Трекер активности с пульсометром и мониторингом сна.",
+    "price": {
+      "amount": 3499.00,
+      "currency": "RUB"
+    },
+    "category": "Гаджеты",
+    "brand": "FitGo",
+    "stock": {
+      "available": 120,
+      "reserved": 25
+    },
+    "sku": "FG-13579",
+    "tags": ["фитнес-браслет", "здоровье", "трекер"],
+    "images": [
+      {
+        "url": "https://example.com/images/product5.jpg",
+        "alt": "Фитнес-браслет FitGo 3 - черный"
+      }
+    ],
+    "specifications": {
+      "weight": "25g",
+      "water_resistance": "IP67",
+      "battery_life": "10 days",
+      "compatibility": "Android, iOS"
+    },
+    "created_at": "2023-10-05T16:40:00Z",
+    "updated_at": "2023-10-12T10:05:00Z",
+    "index": "products",
+    "store_id": "store_001"
+  },
+  {
+    "product_id": "24680",
+    "name": "Портативная колонка SoundBoom",
+    "description": "Мощная Bluetooth-колонка с защитой от воды.",
+    "price": {
+      "amount": 5999.00,
+      "currency": "RUB"
+    },
+    "category": "Аудио",
+    "brand": "SoundBoom",
+    "stock": {
+      "available": 80,
+      "reserved": 10
+    },
+    "sku": "SB-24680",
+    "tags": ["колонка", "Bluetooth", "портативная"],
+    "images": [
+      {
+        "url": "https://example.com/images/product6.jpg",
+        "alt": "Колонка SoundBoom - синяя"
+      }
+    ],
+    "specifications": {
+      "weight": "600g",
+      "battery_life": "15 hours",
+      "water_resistance": "IPX7",
+      "power": "20W"
+    },
+    "created_at": "2023-09-01T11:30:00Z",
+    "updated_at": "2023-10-08T12:20:00Z",
+    "index": "products",
+    "store_id": "store_001"
+  },
+  {
+    "product_id": "11223",
+    "name": "Экшн-камера ActionPro",
+    "description": "Камера для экстремальных съемок с 4K и стабилизацией.",
+    "price": {
+      "amount": 24999.00,
+      "currency": "RUB"
+    },
+    "category": "Электроника",
+    "brand": "ActionPro",
+    "stock": {
+      "available": 40,
+      "reserved": 8
+    },
+    "sku": "AP-11223",
+    "tags": ["экшн-камера", "4K", "спорт"],
+    "images": [
+      {
+        "url": "https://example.com/images/product7.jpg",
+        "alt": "Экшн-камера ActionPro"
+      },
+      {
+        "url": "https://example.com/images/product7_mount.jpg",
+        "alt": "Крепление для камеры ActionPro"
+      }
+    ],
+    "specifications": {
+      "weight": "120g",
+      "resolution": "4K/60fps",
+      "water_resistance": "10m",
+      "battery_life": "90 minutes"
+    },
+    "created_at": "2023-08-15T14:10:00Z",
+    "updated_at": "2023-09-25T16:50:00Z",
+    "index": "products",
+    "store_id": "store_002"
+  },
+  {
+    "product_id": "33445",
+    "name": "Игровая мышь RapidFire",
+    "description": "Мышь с программируемыми кнопками и RGB-подсветкой.",
+    "price": {
+      "amount": 4499.00,
+      "currency": "RUB"
+    },
+    "category": "Компьютеры",
+    "brand": "RapidFire",
+    "stock": {
+      "available": 95,
+      "reserved": 12
+    },
+    "sku": "RF-33445",
+    "tags": ["игровая мышь", "гейминг", "RGB"],
+    "images": [
+      {
+        "url": "https://example.com/images/product8.jpg",
+        "alt": "Игровая мышь RapidFire"
+      }
+    ],
+    "specifications": {
+      "weight": "110g",
+      "dpi": "16000",
+      "buttons": "8",
+      "connectivity": "USB"
+    },
+    "created_at": "2023-10-03T09:45:00Z",
+    "updated_at": "2023-10-15T13:15:00Z",
+    "index": "products",
+    "store_id": "store_001"
+  },
+  {
+    "product_id": "55667",
+    "name": "Умная лампочка BrightHome",
+    "description": "Управляемая через Wi-Fi лампа с изменением цвета.",
+    "price": {
+      "amount": 1999.00,
+      "currency": "RUB"
+    },
+    "category": "Умный дом",
+    "brand": "BrightHome",
+    "stock": {
+      "available": 300,
+      "reserved": 50
+    },
+    "sku": "BH-55667",
+    "tags": ["умный дом", "лампа", "Wi-Fi"],
+    "images": [
+      {
+        "url": "https://example.com/images/product9.jpg",
+        "alt": "Умная лампочка BrightHome"
+      }
+    ],
+    "specifications": {
+      "power": "9W",
+      "color_temperature": "2700K-6500K",
+      "compatibility": "Alexa, Google Home"
+    },
+    "created_at": "2023-07-25T12:00:00Z",
+    "updated_at": "2023-09-10T10:30:00Z",
+    "index": "products",
+    "store_id": "store_002"
+  },
+  {
+    "product_id": "77889",
+    "name": "Беспроводной пылесос CleanAir",
+    "description": "Мощный пылесос с HEPA-фильтром и автономной работой.",
+    "price": {
+      "amount": 15999.00,
+      "currency": "RUB"
+    },
+    "category": "Бытовая техника",
+    "brand": "CleanAir",
+    "stock": {
+      "available": 35,
+      "reserved": 7
+    },
+    "sku": "CA-77889",
+    "tags": ["пылесос", "беспроводной", "уборка"],
+    "images": [
+      {
+        "url": "https://example.com/images/product10.jpg",
+        "alt": "Пылесос CleanAir"
+      }
+    ],
+    "specifications": {
+      "weight": "2.5kg",
+      "battery_life": "40 minutes",
+      "dust_capacity": "0.6L",
+      "noise_level": "75dB"
+    },
+    "created_at": "2023-06-10T15:20:00Z",
+    "updated_at": "2023-08-20T11:40:00Z",
+    "index": "products",
+    "store_id": "store_001"
+  }
+]
